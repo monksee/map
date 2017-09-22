@@ -1,0 +1,8 @@
+<h2>{{pageHeading}}</h2>
+<p class="intro_paragraph">{{introParagraph}}</p><!--introParagraph is defined in homeController and inserted here-->
+
+<ng-map zoom="11" center="[40.74, -74.18]">
+  <marker position="[40.74, -74.18]" data-ng-click="selectMarker()"/>
+  <shape name="circle" radius="400" center="[40.74,-74.18]" radius="4000" />
+  <control name="overviewMap" opened="true" />
+</ng-map>
