@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
 	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:android="http://schemas.android.com/..."
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.gamuzic.map"
 	ios-CFBundleVersion="1.0.0"
@@ -131,11 +132,11 @@
     		<string>115</string>
     	</gap:config-file>
 	<access origin="*" />
-
+	<gap:config-file platform="android" parent="/manifest">
 		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 		<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 		<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-
+	</gap:config-file>
 
 	<plugin name="cordova-plugin-whitelist" version="1" />
     	<allow-intent href="http://*/*" />
