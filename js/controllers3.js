@@ -70,7 +70,9 @@ mapApp.controller("mainController", function($scope){
 	}
  $scope.$on('$viewContentLoaded', function(){
 console.log('content');
+
 	if(document.getElementById('map')){
+console.log('yes');
 		//check if this element exists
 	function initMap() {
 var positions = [{latLng: {lat: 53.41291, lng: -8.24389}, url: "/"},{latLng: {lat: 53.3498053, lng: -6.2603097}, url: "/"}];
@@ -101,6 +103,9 @@ window.location.href = marker.url;
 
 angular.element(document).ready(function () {
     console.log('page loading completed');
+	if(document.getElementById('map')){
+console.log('yes2');
+}
 });
 
 });
