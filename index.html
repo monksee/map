@@ -73,59 +73,12 @@ document.getElementById("login_with_facebook").addEventListener('click', loginVi
 
 	function loginViaFacebook(){
 		alert('facebook');
-	facebookConnectPlugin.getLoginStatus(function(response) {
+		facebookConnectPlugin.getLoginStatus(function(response) {
 			if (response.status === 'connected') {
       				//the user is logged into our app and facebook.
 				//now we need to get their facebook email address and check if they are registered with us. 
 				//ie their email address exists in the database
-				facebookConnectPlugin.api("/me/picture?type=large", ["public_profile"], function(response_pic) {
-					//this is an attempt to get the larger facebook picture. 
-					//it does not work on phonegap but does work with normal javascript sdk		
-					//var fb_picture_url = response_pic.data.url;
-        				
-				}); 
-				facebookConnectPlugin.api('/me?fields=email', ["email"], function(apiResponse) {
-						
-						alert("api" + JSON.stringify(apiResponse));
-						fb_email = apiResponse.email;
-						alert("api fb_email" +fb_email);
-						facebookConnectPlugin.api('/me?fields=id, email,name, link, picture', ["public_profile"],function(data) {
-  							alert("data" + JSON.stringify(data));
-						
-							var fb_user_id = data.id;
-							alert("fb_user_id" + fb_user_id);
-							alert("data.email" + data.email);
-
-							var fb_name = data.name;
-							var fb_picture_url = data.picture.data.url;
-							var fb_user_link = data.link;
-							
-							alert("fb_name" + fb_name);
-							alert("fb_picture_url" + fb_picture_url);
-							alert("fb_user_link" + fb_user_link);
-							//do an ajax request to see if this facebook_email exists in our users table.
-							//also send all important data like profile picture so that if the person is registered, 
-							//then we can update this information in the database.
-							//for example just in case  the user is logging in and their facebook picture is different to the 
-							//last time they logged in through facebook.
-						
-							checkUsersFacebookRegistrationStatus(fb_user_id, fb_email, fb_name, fb_picture_url, fb_user_link);
-
-						}
-						//when i take away this error function the success function executes but if i leave this here the success 
-						//function doesnt execute
-						,function(error_profile){	
-							//api call failed
-        						alert("Facebook public profile API call failed: " + JSON.stringify(error_profile) + " Please contact <a href='#page-support'>support</a>!" );
-    						}); //end api
-							
-					}
-					
-					,function(error_email){	
-						
-        					alert("Facebook email API call failed: " + JSON.stringify(error_email) + " Please contact <a href='#page-support'>support</a>!" );
-    				}); //end api		
-
+				alert(JSON.stringify(response));	
 
 			}else{ //response.status is not connected.
 
@@ -136,54 +89,7 @@ document.getElementById("login_with_facebook").addEventListener('click', loginVi
 					if(response.status === 'connected'){
 						//successful login response
 
-						facebookConnectPlugin.api("/me/picture?type=large", ["public_profile"], function(response_pic) {
-							//this is an attempt to get the larger facebook picture. does not work on phonegap but does work with normal javascript sdk
-							//var fb_picture_url = response_pic.data.url;
-        					
-						}); 
-						facebookConnectPlugin.api('/me?fields=email', ["email"], function(apiResponse) {
-						
-							alert("api" + JSON.stringify(apiResponse));
-							fb_email = apiResponse.email;
-							alert("api fb_email" +fb_email);
-							facebookConnectPlugin.api('/me?fields=id, email, name, link, picture', ["public_profile"],function(data) {
-  								alert("data" + JSON.stringify(data));
-						
-								var fb_user_id = data.id;
-								alert("fb_user_id" + fb_user_id);
-								alert("fb_email" + fb_email);
-								var fb_name = data.name;
-								var fb_picture_url = data.picture.data.url;
-								var fb_user_link = data.link;
-								alert("data.email" + data.email);
-								alert("fb_name" + fb_name);
-								alert("fb_picture_url" + fb_picture_url);
-								alert("fb_user_link" + fb_user_link);
-								//do an ajax request to see if this facebook_email exists in our users table.
-								//also send all important data like profile picture so that if the person is registered, 
-								//then we can update this information in the database.
-								//for example just in case  the user is logging in and their facebook picture is different to the 
-								//last time they logged in through facebook.
-							
-								checkUsersFacebookRegistrationStatus(fb_user_id, fb_email, fb_name, fb_picture_url, fb_user_link);
-
-							}
-							//when i take away this error function the success function executes but if i leave this here the success 
-							//function doesnt execute
-							,function(error_profile){	
-								//api call failed
-        							alert("Facebook public profile API call failed: " + JSON.stringify(error_profile) + " Please contact <a href='#page-support'>support</a>!" );
-    							}); //end api
-							
-						}
-					
-						,function(error_email){	
-						
-        						//alert("Facebook email API call failed: " + JSON.stringify(error_email) + " Please contact <a href='#page-support'>support</a>!" );
-    						}); //end api		
-
-
-								
+						alert(JSON.stringify(response));		
 
 					}//end of response.status === 'connected' if statement
 				}
